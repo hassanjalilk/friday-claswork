@@ -29,4 +29,29 @@ class Rolodex
 			contact.last_name == last_name
 		end
 	end
+
+	def show_all
+		@contacts.each do |x|
+			x.show
+		end
+	end
+
+	def show_first
+		@contacts.each do |x|
+			puts x.first_name
+		end
+	end
+
+	def show_email
+		@contacts.each do |x|
+			puts x.email
+		end
+	end
+
+	def delete(contact)
+		@contacts.delete(contact)
+	end
+
 end
+
+

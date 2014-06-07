@@ -8,4 +8,8 @@ class Contact
 		@email = email
 		@note = note
 	end
+
+	 def show
+	 		puts "#{first_name} #{last_name} #{email} #{note}"
+	 	end
 end
