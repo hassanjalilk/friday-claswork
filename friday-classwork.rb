@@ -6,8 +6,8 @@ class CRM
 
 	attr_accessor :name
 
-	def self.rn(name)
-		crm = self.new(name)
+	def self.run(name)
+		crm = CRM.new(name)
 		crm.main_menu
 	end
 
@@ -44,7 +44,7 @@ class CRM
 	  when 6 then puts "Goodbye!"
 	  else
 			puts "Invalid option. please try again!"
-			main_manu
+			main_menu
 		end
 	end
 
@@ -60,9 +60,27 @@ class CRM
 	  @rolodex.add_contact(Contact.new(first_name, last_name, email, note))
 	  main_menu
 	end
+
+	def modify_contact
+		print "Last Name to be modified:"
+		last_name = gets.chomp
+		found_contact = @rolodex.search(last_name)
+		if found_contact
+			puts found_contact.first_name
+			print "New first name:"
+			modified_first_name = gets.chomp
+			found_contact.first_name = modified_first_name
+			print "New last name:"
+			modified_last_name = gets.chomp
+			found_contact.last_name = modified_last_name
+			main_menu
+		else
+			puts "No contact found."
+		end
+	end
 end
 
-# CRM.run("Bitmaker Labs CRM")
+CRM.run("Bitmaker Labs CRM")
 
-crm = CRM.new("Bitmaker Labs CRM")
-crm.main_menu
+# crm = CRM.new("Bitmaker Labs CRM")
+# crm.main_menu
